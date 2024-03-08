@@ -1,3 +1,97 @@
+# Student name and ID:
+## Ali Fetanat, ID: 40158208
+
+### Step 1:
+![CFG diagram lab drawio](https://github.com/SOEN345-WINTER2024/cfg-graph-lab-Fetyali7/assets/70493307/0d57af7b-3213-4f3f-a519-64547174957c)
+
+### Step 2:
+Test Requirements (TRs)
+* 		Numeric Input Validation (TR1): Verifying the correct capture and display of numeric inputs from 0 through 9.
+* 		Arithmetic Operations Verification (TR2): Ensuring the calculator accurately sets up for addition, subtraction, multiplication, and division upon the respective button presses.
+* 		Clear Functionality Assurance (TR3): Confirming the calculator resets all internal states and displays as intended when the clear button is activated.
+* 		Calculation Execution Accuracy (TR4): Testing the calculator's ability to perform and display the result of calculations correctly after pressing the equals button.
+Detailed Test Paths
+Numeric Input Validation (TR1)
+* Path 1: Activate R.id.key_0_btn and verify display shows "0".
+* Path 2-10: Similarly, for R.id.key_1_btn through R.id.key_9_btn, ensure each numeric button correctly updates the display with its respective value.
+Arithmetic Operations Verification (TR2)
+* Path 11: Press R.id.key_1_btn followed by R.id.key_add_btn and check if the addition operation is queued.
+* Path 12: Press R.id.key_1_btn followed by R.id.key_sub_btn and check if the subtraction operation is queued.
+* Path 13: Press R.id.key_1_btn followed by R.id.key_div_btn and check if the division operation is queued.
+* Path 14: Press R.id.key_1_btn followed by R.id.key_mult_btn and verify the multiplication operation is queued.
+Clear Functionality Assurance (TR3)
+* Path 15: After engaging any operation or numeric input, trigger R.id.key_clear_btn and confirm that all internal states (including number, num1, num2, and symbol) are reset, and the display is cleared.
+Calculation Execution Accuracy (TR4)
+* Path 16 (Addition): Input 1, select addition, input another 1, press equals, and assert the displayed result is "2".
+* Path 17 (Subtraction): Input 2, choose subtraction, input 1, press equals, and validate the result as "1".
+* Path 18 (Division): Enter 6, opt for division, input 2, press equals, and ensure the outcome is "3".
+* Path 19 (Multiplication): Key in 3, select multiplication, input another 3, hit equals, and confirm the result displayed is "9".
+
+### Step 3: 
+Test Requirements for Edge Coverage (TRs)
+* 		[Sequential Numeric Inputs (TR1)]
+* 		[Transition Between Arithmetic Operations (TR2)]
+* 		[Operation After Calculation (TR3)]
+* 		[Clear Functionality Post-Operation and Post-Calculation (TR4)]
+Detailed Test Paths for Edge Coverage
+[Sequential Numeric Inputs (TR1)]
+* [Path 1]: [1] ➔ [2] ➔ Verify "12".
+[Transition Between Arithmetic Operations (TR2)]
+* [Path 2]: [3] ➔ [+] ➔ [-] ➔ [1] ➔ Verify last operation executed.
+* [Path 3]: [Operation] ➔ [Operation] ➔ Verify last operation ready.
+[Operation After Calculation (TR3)]
+* [Path 4]: [5] ➔ [+] ➔ [3] ➔ [=] ➔ [1] ➔ [+] ➔ [1] ➔ Verify new calculation.
+* [Path 5]: [2] ➔ [*] ➔ [2] ➔ [=] ➔ [6] ➔ [/] ➔ [3] ➔ Verify new calculation.
+[Clear Functionality Post-Operation and Post-Calculation (TR4)]
+* [Path 6]: [Operation] ➔ [C] ➔ Verify reset.
+* [Path 7]: [Calculation] ➔ [C] ➔ Verify reset.
+
+### Step 4:
+Test Requirements for Edge-Pair Coverage (TRs)
+* 		[Sequential Numeric Inputs (TR1)]
+* 		[Transition Between Arithmetic Operations (TR2)]
+* 		[Operation After Calculation (TR3)]
+* 		[Clear Functionality Post-Operation and Post-Calculation (TR4)]
+Detailed Test Paths for Edge-Pair Coverage
+[Sequential Numeric Inputs (TR1)]
+* [Path 1]: [1] ➔ [2] ➔ [3] ➔ Verify "123".
+[Transition Between Arithmetic Operations (TR2)]
+* [Path 2]: [3] ➔ [+] ➔ [-] ➔ [*] ➔ [1] ➔ Verify last operation executed.
+* [Path 3]: [4] ➔ [/] ➔ [+] ➔ [-] ➔ Verify last operation ready.
+[Operation After Calculation (TR3)]
+* [Path 4]: [5] ➔ [+] ➔ [3] ➔ [=] ➔ [2] ➔ [-] ➔ [1] ➔ [=] ➔ Verify new calculation continues correctly.
+* [Path 5]: [2] ➔ [*] ➔ [2] ➔ [=] ➔ [6] ➔ [/] ➔ [3] ➔ [=] ➔ Verify correct calculation result.
+[Clear Functionality Post-Operation and Post-Calculation (TR4)]
+* [Path 6]: [3] ➔ [+] ➔ [C] ➔ [4] ➔ [-] ➔ Verify reset and correct operation.
+* [Path 7]: [2] ➔ [*] ➔ [2] ➔ [=] ➔ [C] ➔ [5] ➔ [/] ➔ [1] ➔ Verify reset and correct operation.
+
+### Step 5:
+![EFG diagram lab drawio](https://github.com/SOEN345-WINTER2024/cfg-graph-lab-Fetyali7/assets/70493307/aeef2e51-56ca-4923-baf7-02595cb29de3)
+
+### Step 6:
+node coverage:
+key_0_btn to key_9_btn: Each button press for digits 0 through 9, appending the respective digit to the number variable.
+key_add_btn: Initiates addition operation.
+key_sub_btn: Initiates subtraction operation.
+key_div_btn: Initiates division operation.
+key_mult_btn: Initiates multiplication operation.
+key_clear_btn: Clears all inputs and outputs.
+key_equals_btn: Computes and displays the result of the operation.
+
+Edge coverage:
+key_0_btn to key_add_btn: Entering "0" then pressing "+".
+key_add_btn to key_1_btn: Pressing "+" then entering "1".
+And so forth for transitions between digit entry, operations, and clear.
+
+Edge-Pair Coverage:
+[Path 1]: [1] ➔ [2] ➔ [3] ➔ Verify "123".
+[Transition Between Arithmetic Operations (TR2)]
+* [Path 2]: [3] ➔ [+] ➔ [-] ➔ [*] ➔ [1] ➔ Verify last operation executed.
+* [Path 3]: [4] ➔ [/] ➔ [+] ➔ [-] ➔ Verify last operation ready.
+
+
+
+
 # Soot Tutorial
 [![Build Status](https://travis-ci.com/noidsirius/SootTutorial.svg?branch=master)](https://travis-ci.com/noidsirius/SootTutorial)
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/noidsirius/SootTutorial)
